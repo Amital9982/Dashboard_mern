@@ -55,6 +55,12 @@
   margin-top: 3px;
   margin-left: 20px;
 }
+.invalid {
+  color: red;
+  margin-top: -20px;
+  display: block;
+  margin-left: 20px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
