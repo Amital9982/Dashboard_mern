@@ -18,7 +18,7 @@ const Nav = () => {
         <ul className="nav-ul">
           <li>
             {" "}
-            <Link to="/">Products</Link>
+            <Link to="/productlist">Products</Link>
           </li>
           <li>
             <Link to="/add">Add Products</Link>
