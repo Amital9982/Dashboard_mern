@@ -1,37 +1,16 @@
 import React, { useState } from "react";
 
-const AddProducts = () => {
+const UpdateProduct = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [company, setCompany] = useState("");
-  const [error, setError] = useState(false);
-  const addData = async () => {
-    console.warn(!name);
-    if (!name || !price || !category || !company) {
-      setError(true);
-      return false;
-    }
-    const userId = JSON.parse(localStorage.getItem("user"))._id;
-    let result = await fetch("http://localhost:4500/add-product", {
-      method: "POST",
-      body: JSON.stringify({
-        name,
-        price,
-        category,
-        company,
-        userId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    result = await result.json();
-    console.warn(result);
+  const updateData = () => {
+    console.warn(name, price, category, company);
   };
   return (
     <div className="product">
-      <h1>Add products</h1>
+      <h3>Update Product</h3>
       <input
         onChange={(e) => {
           setName(e.target.value);
@@ -41,7 +20,7 @@ const AddProducts = () => {
         type="text"
         placeholder="Enter Product Name"
       />
-      {error && !name && <span className="invalid">Enter valid name</span>}
+
       <input
         onChange={(e) => {
           setPrice(e.target.value);
@@ -51,7 +30,6 @@ const AddProducts = () => {
         type="text"
         placeholder="Enter Product Price"
       />
-      {error && !price && <span className="invalid">Enter valid price</span>}
 
       <input
         onChange={(e) => {
@@ -62,9 +40,7 @@ const AddProducts = () => {
         className="inputBox"
         placeholder="Enter Product category"
       />
-      {error && !category && (
-        <span className="invalid">Enter valid Category</span>
-      )}
+
       <input
         onChange={(e) => {
           setCompany(e.target.value);
@@ -74,14 +50,11 @@ const AddProducts = () => {
         placeholder="Enter Product comapany"
         className="inputBox"
       />
-      {error && !company && (
-        <span className="invalid">Enter valid company</span>
-      )}
-      <button onClick={addData} type="submit" className="appbutton">
-        ADD
+      <button onClick={updateData} type="submit" className="appbutton">
+        Update
       </button>
     </div>
   );
 };
 
-export default AddProducts;
+export default UpdateProduct;
