@@ -50,4 +50,11 @@ app.get("/product/:id", async (req, resp) => {
     resp.send({ result: "no products found" });
   }
 });
+app.put("/product/:id", async (req, resp) => {
+  let result = await Product.updateOne(
+    { _id: req.params.id },
+    { $set: req.body }
+  );
+  resp.send(result);
+});
 app.listen(4500);
