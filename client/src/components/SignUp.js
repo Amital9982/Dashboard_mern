@@ -25,7 +25,7 @@ const SignUp = () => {
     console.warn(result);
     localStorage.setItem("user", JSON.stringify(result));
     if (result) {
-      navigate("/");
+      navigate("/productlist");
     }
   };
   return (
